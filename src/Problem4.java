@@ -1,11 +1,13 @@
 import java.util.Random;
 
-class Problem3 {
+class Problem4 {
     public static void main(String[] args) {
-    	System.out.println("kth smallest: " + kSmallest(10,0));
+    	int n = 10;
+    	int k = 7;
+    	System.out.println(k + "th largest: " + kLargest(n,k));
     }
 
-    public static <E> E kSmallest(int n, int k) {
+    public static <E> E kLargest(int n, int k) {
         Integer[] item = new Integer[n];
         Random r = new Random();
 
@@ -16,9 +18,11 @@ class Problem3 {
         for (int i = 0; i < item.length; i++) System.out.println(item[i] + " ");
 
         MyBinaryHeap <Integer> myHeap = new MyBinaryHeap <> (item);
+        
+        System.out.println("Heap: " + myHeap.toString());
 
-        for (int i = 1; i < k; i++) myHeap.deleteMin();
+        for (int i = 1; i < k; i++) myHeap.deleteMax();
 
-        return (E) myHeap.deleteMin();
+        return (E) myHeap.deleteMax();
     }
 }

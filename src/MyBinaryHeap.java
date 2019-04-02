@@ -150,4 +150,21 @@ public class MyBinaryHeap <E extends Comparable<? super E>> {
 	{
 		return 1 << (Integer.toBinaryString(size).length() + 1);
 	}
+	
+	public E deleteMax() {
+		if(currentSize > 0)
+		{
+			
+			E temp = heap[currentSize];
+
+			heap[currentSize--] = heap[1];//moved last value to top
+			percolateUp(currentSize);//move top value down to final position
+
+			return temp;
+		}
+		else
+		{
+			return null;//no items in heap
+		}
+	}
 }
