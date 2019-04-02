@@ -18,7 +18,7 @@ public class Problem5 {
 				rands[i] = (int) (Math.random() * n);
 				output += rands[i] + ", ";
 			}
-			System.out.println(output + "\n");
+			System.out.println(output);
 			
 			// Build heap by inserting one by one
 			System.out.println("Building heap one by one...");
@@ -42,7 +42,7 @@ public class Problem5 {
 			// Wait to run next test
 			System.out.println(n != N[N.length-1] ? "Press any key to run next test...":"");
 			new Scanner(System.in).nextLine();
-			System.out.println("----------------------------------------");
+			System.out.println("----------------------------------------\n");
 		}
 	}
 	
