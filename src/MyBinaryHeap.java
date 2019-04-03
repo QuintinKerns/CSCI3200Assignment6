@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class MyBinaryHeap <E extends Comparable<? super E>> {
 	private int defaultSize = 4;
 	private int currentSize = 0;
@@ -193,14 +195,41 @@ public class MyBinaryHeap <E extends Comparable<? super E>> {
 		return 1 << (Integer.toBinaryString(size).length() + 1);
 	}
 	
-	public E deleteMax() {
+	@SuppressWarnings("unchecked")
+	public E deleteMax(int k) {
 		if(currentSize > 0)
 		{
-//			E[] S = new E[currentSize];
-//			for (int i = 0; i < k; i++){
-//				
-//			}
-			return null;
+	        int[] N = new int[10];
+	        Integer[] kvals = new Integer[k];
+	        
+	        for(int i = 0; i < N.length; i++)
+	        {
+	            N[i] = (int) (Math.random() * k * 10);
+	        }
+
+	        for(int i = 0; i < k; i++)
+	        {
+	        	kvals[i] = N[i];
+	        }
+
+	        MyBinaryHeap lrgstKVals = new MyBinaryHeap(kvals);
+	        
+	        int heapMin = (int) lrgstKVals.findMin();
+	        
+	        for(int i = k; i < N.length; i++)
+	        {
+	            if(N[i] > heapMin)
+	            {
+	                lrgstKVals.deleteMin();
+	                lrgstKVals.insert(N[i]);
+	                heapMin = (int) lrgstKVals.findMin();
+	            }
+	        }
+	        
+	        System.out.println("\n-----------------");
+	        System.out.println("Largest " + k + " numbers in the Array stored in the Heap:");
+	        System.out.println(lrgstKVals);
+	        return (E) lrgstKVals;
 		}
 		else
 		{
