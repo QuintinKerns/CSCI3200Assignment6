@@ -6,16 +6,16 @@ class Problem3 {
     }
 
     public static <E> E kSmallest(int n, int k) {
-        Integer[] item = new Integer[n];
+        Integer[] items = new Integer[n];
         Random r = new Random();
 
-        for (int i = 0; i < n; i++) item[i] = r.nextInt(50) + 1;
+        for (int i = 0; i < n; i++) items[i] = r.nextInt(50) + 1;
 
         System.out.println("Numbers for heap: ");
 
-        for (int i = 0; i < item.length; i++) System.out.println(item[i] + " ");
+        for (int i = 0; i < items.length; i++) System.out.println(items[i] + " ");
 
-        MyBinaryHeap <Integer> myHeap = new MyBinaryHeap <> (item);
+        MyBinaryHeap <Integer> myHeap = new MyBinaryHeap <> (items);
 
         for (int i = 1; i < k; i++) myHeap.deleteMin();
 

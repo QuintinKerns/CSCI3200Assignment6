@@ -1,30 +1,38 @@
 import java.util.Random;
 
 class Problem4 {
-    public static void main(String[] args) {
-    	int n = 10;
-    	int k = 7;
-    	System.out.println(k + "th largest: " + kLargest(n,k));
-    }
+	public static void main(String[] args) {
+		int k = 7;
+		System.out.println(k + "th largest element: " + deleteMax(k));
+	}
 
-    public static <E> E kLargest(int n, int k) {
-        Integer[] item = new Integer[n];
-        Random r = new Random();
+	@SuppressWarnings("unchecked")
+	public static Integer deleteMax(int k) {
+		int[] N = new int[10];
+		Integer[] kvals = new Integer[k];
 
-        for (int i = 0; i < n; i++) item[i] = r.nextInt(50) + 1;
+		for (int i = 0; i < N.length; i++) {
+			N[i] = (int) (Math.random() * k * 10);
+		}
 
-        System.out.println("Numbers for heap: ");
+		for (int i = 0; i < k; i++) {
+			kvals[i] = N[i];
+		}
 
-        String output = "  ";
-        for (int i = 0; i < item.length; i++) output += item[i] + ", ";
-        System.out.println(output);
+		MyBinaryHeap lrgstKVals = new MyBinaryHeap<Integer>(kvals);
 
-        MyBinaryHeap <Integer> myHeap = new MyBinaryHeap <> (item);
-        
-        System.out.println("Heap: \n" + myHeap.toString());
+		int heapMin = (int) lrgstKVals.findMin();
 
-        for (int i = 1; i < k; i++) myHeap.deleteMax();
+		for (int i = k; i < N.length; i++) {
+			if (N[i] > heapMin) {
+				lrgstKVals.deleteMin();
+				lrgstKVals.insert(N[i]);
+				heapMin = (int) lrgstKVals.findMin();
+			}
+		}
 
-        return (E) myHeap.deleteMax();
-    }
+		System.out.println("Largest " + k + " numbers in the Array stored in the Heap:");
+		System.out.println(lrgstKVals);
+		return (Integer) lrgstKVals.findMin();
+	}
 }
