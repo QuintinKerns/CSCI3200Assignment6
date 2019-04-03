@@ -196,16 +196,15 @@ public class MyBinaryHeap <E extends Comparable<? super E>> {
 	public E deleteMax() {
 		if(currentSize > 0)
 		{
-			
-			E temp = heap[currentSize];
-
-			heap[currentSize--] = heap[1];//moved last value to top
-			percolateUp(currentSize);//move top value down to final position
-
-			return temp;
+//			E[] S = new E[currentSize];
+//			for (int i = 0; i < k; i++){
+//				
+//			}
+			return null;
 		}
 		else
 		{
+			opCount(2);
 			return null;//no items in heap
 		}
 	}

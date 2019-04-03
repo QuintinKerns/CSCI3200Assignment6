@@ -15,11 +15,13 @@ class Problem4 {
 
         System.out.println("Numbers for heap: ");
 
-        for (int i = 0; i < item.length; i++) System.out.println(item[i] + " ");
+        String output = "  ";
+        for (int i = 0; i < item.length; i++) output += item[i] + ", ";
+        System.out.println(output);
 
         MyBinaryHeap <Integer> myHeap = new MyBinaryHeap <> (item);
         
-        System.out.println("Heap: " + myHeap.toString());
+        System.out.println("Heap: \n" + myHeap.toString());
 
         for (int i = 1; i < k; i++) myHeap.deleteMax();
 
